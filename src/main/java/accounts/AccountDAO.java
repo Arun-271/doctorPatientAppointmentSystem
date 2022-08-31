@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class AccountDAO {
 	String url = "jdbc:mysql://localhost:3306/appointment_database";
 	String userName = "root";
-	String password = "arun1234";
+	String password = Enter the password here;
 	String checkQuery = "select * from accounts where email = ?";
 
 	public int createAccountDb(Accounts a) {
