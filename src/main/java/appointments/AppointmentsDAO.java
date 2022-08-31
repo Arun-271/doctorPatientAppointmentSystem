@@ -14,7 +14,7 @@ import mail.Mail;
 public class AppointmentsDAO {
 	String url = "jdbc:mysql://localhost:3306/appointment_database";
     String userName = "root";
-    String password = "arun1234";
+    String password = "passwordGoesHere";
 	String checkQuery = "select * from accounts where email = ?";
 	public int createAppointmentDB(Appointments appointment) {
 		String specialist = appointment.getSpecialList();
