@@ -14,7 +14,7 @@ import mail.Mail;
 public class AppointmentsDAO {
 	String url = "jdbc:mysql://localhost:3306/appointment_database";
     String userName = "root";
-    String password = "passwordGoesHere";
+    String password = "arun1234";
 	String checkQuery = "select * from accounts where email = ?";
 	public int createAppointmentDB(Appointments appointment) {
 		String specialist = appointment.getSpecialList();
@@ -267,7 +267,7 @@ public class AppointmentsDAO {
 	        }
 		return 0;
 	}
-	public JSONArray bookedSlots(int id){
+	public JSONArray bookedSlots(int id,String month){
         String url = "jdbc:mysql://localhost:3306/appointment_database";
         String userName = "root";
         String password = "arun1234";
@@ -275,9 +275,10 @@ public class AppointmentsDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, userName, password);
-            String querry = "select appointment_time , appointment_date,status,account_id from appointments where doctor_id = ? ";
+            String querry = "select appointment_time , appointment_date,status,account_id from appointments where doctor_id = ? AND MONTH(appointment_date) = ?";
             PreparedStatement prt = con.prepareStatement(querry);
             prt.setInt(1, id);
+            prt.setString(2, month);
             ResultSet resultSet = prt.executeQuery();
             while (resultSet.next()) {
                 int columns = resultSet.getMetaData().getColumnCount();

@@ -14,6 +14,13 @@ public class BookedSlotsSer extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String spec = (String)request.getParameter("id");
+		int month = Integer.valueOf(request.getParameter("month"));
+		String formatedM;
+		if(month < 10) {
+			formatedM = '0'+String.valueOf(month);
+		}else {
+			formatedM = String.valueOf(month);
+		}
 		AppointmentsDAO aObj = new AppointmentsDAO();
 		HttpSession session =request.getSession();
 		String email = (String)session.getAttribute("email");
@@ -22,7 +29,7 @@ public class BookedSlotsSer extends HttpServlet {
 		}else {
 		PrintWriter out = response.getWriter();
 		int val = (spec.equals("general"))?1:(spec.equals("dentist"))?2:3;
-		out.print(aObj.bookedSlots(val));
+		out.print(aObj.bookedSlots(val,formatedM));
 		}
 	}
 
