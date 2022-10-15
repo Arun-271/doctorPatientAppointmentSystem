@@ -7,7 +7,7 @@ import javax.mail.internet.*;
 
 public class Mail {
     public static void Message(String email,String message){
-        send("arunpersonal57@gmail.com","qomiyfulwdktngea",email,"Appoint Status updated",message);
+        send("email","qomiyfulwdktngea",email,"Appoint Status updated",message);
     }
     public static void send(String from,String password,String to,String sub,String msg){
         Properties props = new Properties();
